@@ -1,5 +1,5 @@
-# Spring Cloud AWS Lambda Template
-AWS Lambda Function bootstrapped with Spring Boot + Spring Cloud runtime.
+# Spring Cloud AWS Lambda Template :: Triggered by :: S3
+AWS Lambda Function bootstrapped with Spring Boot + Spring Cloud runtime that gets invoked on S3 events.
 
 ##### Package App
     mvn clean package
