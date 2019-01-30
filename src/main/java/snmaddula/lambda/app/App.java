@@ -6,15 +6,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import snmaddula.lambda.app.domain.Input;
+import snmaddula.lambda.app.domain.Output;
+import snmaddula.lambda.app.service.AdditionService;
+
 @SpringBootApplication
 public class App {
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}
-	
+
+	/**
+	 * This function takes a list of integers and calculates the sum of all the
+	 * integers.
+	 */
 	@Bean
-	public Function<String, String> uppercase() {
-		return (input) -> input.toUpperCase();
-	} 
+	public Function<Input, Output> add(AdditionService additionService) {
+		return (input) -> additionService.add(input);
+	}
 }

@@ -20,7 +20,7 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-events -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
@@ -46,6 +46,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
@@ -54,7 +59,7 @@
 	</dependencies>
 
 	<dependencyManagement>
-	
+
 		<dependencies>
 			<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-function-dependencies -->
 			<dependency>
@@ -65,15 +70,15 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-		
+
 	</dependencyManagement>
 
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		
+
 		<plugins>
-		
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -86,7 +91,7 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -96,9 +101,9 @@
 					<shadedClassifierName>aws</shadedClassifierName>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
-		
+
 	</build>
 
 </project>
