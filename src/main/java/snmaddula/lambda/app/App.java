@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.function.adapter.aws.SpringBootRequestHandler;
 import org.springframework.context.annotation.Bean;
 
 import snmaddula.lambda.app.domain.Input;
@@ -11,7 +12,7 @@ import snmaddula.lambda.app.domain.Output;
 import snmaddula.lambda.app.service.AdditionService;
 
 @SpringBootApplication
-public class App {
+public class App extends SpringBootRequestHandler<Input, Output> {
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);

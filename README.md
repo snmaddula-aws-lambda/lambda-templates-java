@@ -16,6 +16,12 @@ AWS Lambda Function bootstrapped with Spring Boot + Spring Cloud runtime.
 		"additionResult": 6
 	}
 
+##### Lambda Function [ "add" ] Configuration:
+![](assets/aws-lambda-fn-config.png)
+
+
+##### Lambda Function [ "add" ] Execution Status / Result:
+![](assets/aws-lambda-fn-execution-result.png)
 
 
 	
