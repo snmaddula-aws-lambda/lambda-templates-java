@@ -42,7 +42,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-function-webflux</artifactId>
+			<artifactId>spring-cloud-starter-function-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -93,7 +93,7 @@
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<shadedArtifactAttached>true</shadedArtifactAttached>
-					<shadedClassifierName>lambda</shadedClassifierName>
+					<shadedClassifierName>aws</shadedClassifierName>
 				</configuration>
 			</plugin>
 			
