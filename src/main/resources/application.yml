@@ -1,0 +1,6 @@
+cloud:
+  aws:
+    region:
+      static: us-east-2
+      auto: false
+      
