@@ -7,23 +7,40 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.function.adapter.aws.SpringBootRequestHandler;
 import org.springframework.context.annotation.Bean;
 
-import snmaddula.lambda.app.domain.Input;
-import snmaddula.lambda.app.domain.Output;
-import snmaddula.lambda.app.service.AdditionService;
+import com.amazonaws.services.s3.event.S3EventNotification;
+import com.amazonaws.services.s3.event.S3EventNotification.S3Entity;
 
 @SpringBootApplication
-public class App extends SpringBootRequestHandler<Input, Output> {
+public class App extends SpringBootRequestHandler<S3EventNotification , String> {
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}
 
-	/**
-	 * This function takes a list of integers and calculates the sum of all the
-	 * integers.
-	 */
 	@Bean
-	public Function<Input, Output> add(AdditionService additionService) {
-		return (input) -> additionService.add(input);
+	public Function<S3EventNotification, String> processJsonPayload() {
+		return (eventNotification) -> {
+			S3Entity s3 = eventNotification.getRecords().get(0).getS3();
+			String bucketName = s3.getBucket().getName();
+			String objectKey = s3.getObject().getKey();
+			System.out.println("-----------------JSON PAYLOAD-----------------------");
+			System.out.println("bucketName: " + bucketName);
+			System.out.println("objectKey: " + objectKey);
+			return "DONE";
+		};
+	}
+
+	@Bean
+	public Function<S3EventNotification, String> processXMLPayload() {
+		return (eventNotification) -> {
+			S3Entity s3 = eventNotification.getRecords().get(0).getS3();
+			String bucketName = s3.getBucket().getName();
+			String objectKey = s3.getObject().getKey();
+			
+			System.out.println("------------------XML PAYLOAD-----------------------");
+			System.out.println("bucketName: " + bucketName);
+			System.out.println("objectKey: " + objectKey);
+			return "DONE";
+		};
 	}
 }
