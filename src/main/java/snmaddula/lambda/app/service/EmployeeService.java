@@ -23,7 +23,9 @@ public class EmployeeService {
 
 	@PostConstruct
 	public void loadSeedData() {
-		LongStream.rangeClosed(1, 10).forEach(i -> EMPLOYEES.put(i, new Employee(i, "NAME_" + i, "EMAIL_" + i)));
+		LongStream
+			.rangeClosed(1, 10)
+			.forEach(i -> EMPLOYEES.put(i, new Employee(i, "NAME_" + i, "EMAIL_" + i)));
 	}
 
 	public Output fetchById(Long id) {
@@ -31,7 +33,6 @@ public class EmployeeService {
 			return new Output(EMPLOYEES.get(id));
 		}
 		return new Output("No record found for id: " + id);
-
 	}
 
 	public Output fetchAll() {
